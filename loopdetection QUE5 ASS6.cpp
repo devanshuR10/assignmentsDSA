@@ -1,0 +1,17 @@
+bool isCircular(Node* head) {
+    if (head == NULL)
+        return false;
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;          
+        fast = fast->next->next;     
+
+        if (slow == fast)
+            return true; // They met → circular
+    }
+
+    return false; // fast reached NULL → not circular
+}
